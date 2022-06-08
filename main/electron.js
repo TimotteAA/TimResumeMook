@@ -11,6 +11,7 @@ function createMainWindow() {
     height: 800,
     webPreferences: {
       nodeIntegration: true,
+      preload: path.join(__dirname, './preload.js'),
     },
   });
   if (isDev()) {
@@ -18,6 +19,7 @@ function createMainWindow() {
   } else {
     mainWindow.loadURL(`file://${path.join(__dirname, '../dist/index.html')}`);
   }
+  mainWindow.webContents.openDevTools();
 }
 
 app.whenReady().then(() => {

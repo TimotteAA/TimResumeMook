@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import { HiCubeTransparent } from 'react-icons/hi';
-import { shell } from 'electron';
+import { useNavigate } from 'react-router-dom';
 
 import styles from './index.module.less';
+import { isHttpOrHttps } from '@utils/isHttpOrHttps';
+
+const { shell } = window.electron;
 
 interface ILink {
   src: string;
@@ -10,16 +13,22 @@ interface ILink {
 }
 
 const defaultLinks: ILink[] = [
-  { src: '', title: '介绍' },
-  { src: '', title: '简历' },
-  { src: '', title: '源码' },
+  { src: 'https://github.com/TimotteAA/TimResumeMook/tree/master', title: '介绍' },
+  { src: '/resume', title: '简历' },
+  { src: 'https://github.com/TimotteAA/TimResumeMook/tree/master', title: '源码' },
 ];
 
 export default function Root() {
+  const navigate = useNavigate();
   const [links] = useState(defaultLinks);
 
-  const handleRouteChange = (e: React.MouseEvent<HTMLElement>) => {
-    e.preventDefault();
+  const handleRouteChange = (src: string) => {
+    if (isHttpOrHttps(src)) {
+      shell.openExternal('https://github.com/TimotteAA/TimResumeMook/tree/master');
+    } else {
+      console.log(src);
+      navigate(src);
+    }
   };
 
   return (
@@ -33,7 +42,7 @@ export default function Root() {
         <div className={styles.links}>
           {links.map((link) => {
             return (
-              <div className={styles.linkItem} onClick={handleRouteChange}>
+              <div key={link.title} className={styles.linkItem} onClick={() => handleRouteChange(link.src)}>
                 {link.title}
               </div>
             );
