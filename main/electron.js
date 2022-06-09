@@ -1,9 +1,11 @@
 const path = require('path');
-const { BrowserWindow, app } = require('electron');
+const { BrowserWindow, app, ipcMain } = require('electron');
 
 function isDev() {
   return process.env.NODE_ENV === 'development';
 }
+
+const ROOT_PATH = path.join(app.getAppPath(), '../');
 
 function createMainWindow() {
   const mainWindow = new BrowserWindow({
@@ -26,5 +28,9 @@ app.whenReady().then(() => {
   createMainWindow();
   app.on('activate', () => {
     if (BrowserWindow.getAllWindows().length === 0) createMainWindow();
+  });
+
+  ipcMain.on('get-root-path', (event) => {
+    event.reply('reply-root-path', ROOT_PATH);
   });
 });

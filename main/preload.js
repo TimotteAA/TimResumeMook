@@ -1,7 +1,14 @@
-const { contextBridge, ipcRenderer, remote, shell } = require('electron');
+const { contextBridge, ipcRenderer, shell } = require('electron');
 
 contextBridge.exposeInMainWorld('electron', {
   ipcRenderer,
-  remote,
   shell,
+});
+
+contextBridge.exposeInMainWorld('ipcRenderApi', {
+  onReplyRootPath: (handler) => {
+    ipcRenderer.on('reply-root-path', (_, ...args) => {
+      handler(...args);
+    });
+  },
 });

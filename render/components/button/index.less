@@ -1,0 +1,46 @@
+// 基础样式
+.my-button {
+  display: inline-block;
+  box-sizing: border-box;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 5px 10px;
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 14px;
+  text-align: center;
+  -webkit-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  background-color: #fff;
+  &:hover {
+    opacity: 0.6;
+  }
+}
+
+// 大小样式
+.my-button-small {
+  width: 64px;
+  height: 32px;
+  font-size: 30px;
+}
+
+.my-button-middle {
+  width: 90px;
+  height: 36px;
+  line-height: 34px;
+}
+
+.my-button-big {
+  width: 118px;
+  height: 42px;
+  line-height: 40px;
+}
+
+.my-button-disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.my-button-hide-border {
+  border: none;
+}

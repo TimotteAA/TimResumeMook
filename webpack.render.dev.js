@@ -28,7 +28,8 @@ const devConfig = {
             loader: 'css-loader',
             options: {
               modules: {
-                localIdentName: '[name]__[local]__[hash:base64:5]',
+                // localIdentName: '[name]__[local]__[hash:base64:5]',
+                localIdentName: '[local]',
               },
             },
           },

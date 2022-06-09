@@ -26,7 +26,6 @@ export default function Root() {
     if (isHttpOrHttps(src)) {
       shell.openExternal('https://github.com/TimotteAA/TimResumeMook/tree/master');
     } else {
-      console.log(src);
       navigate(src);
     }
   };
