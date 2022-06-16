@@ -13,7 +13,8 @@
     "baseUrl": "./",
     "paths": {
       "@src/*": ["./render/*"],
-      "@utils/*": ["./utils/*"]
+      "@utils/*": ["./utils/*"],
+      "@assets": ["./assets/*"]
     },
     "moduleResolution": "node"
   },

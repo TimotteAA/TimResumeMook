@@ -3,15 +3,19 @@
   overflow: hidden;
   box-sizing: border-box;
   background-color: #fff;
+  border-radius: 25px;
+
   .scroll-box-hidden {
     overflow-y: scroll;
     overflow-x: hidden;
     height: 100%;
     width: calc(100% + 17px);
+    border-radius: 25px;
 
     .scroll-box-inner {
       width: calc(100% - 17px);
       display: inline-block;
+      border-radius: 25px;
     }
   }
   .scroll-box-hidden::-webkit-scrollbar {

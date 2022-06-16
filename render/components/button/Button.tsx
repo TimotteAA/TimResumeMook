@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 
-import './index.less';
+import './index.normal.less';
 
 export interface Button {
   /**

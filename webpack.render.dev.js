@@ -20,7 +20,7 @@ const devConfig = {
         use: ['style-loader', 'css-loader', 'postcss-loader'],
       },
       {
-        test: /\.less$/,
+        test: /\.module\.less$/,
         exclude: /node_modules/,
         use: [
           'style-loader',
@@ -28,14 +28,19 @@ const devConfig = {
             loader: 'css-loader',
             options: {
               modules: {
-                // localIdentName: '[name]__[local]__[hash:base64:5]',
-                localIdentName: '[local]',
+                localIdentName: '[name]__[local]__[hash:base64:5]',
+                // localIdentName: '[local]',
               },
             },
           },
           'postcss-loader',
           'less-loader',
         ],
+      },
+      {
+        test: /\.normal\.less$/,
+        exclude: /node_modules/,
+        use: ['style-loader', 'css-loader', 'postcss-loader', 'less-loader'],
       },
       {
         test: /\.(jpg|png|jpe?g|gif|svg)$/,

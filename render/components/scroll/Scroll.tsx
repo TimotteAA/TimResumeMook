@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './index.less';
+import './index.normal.less';
 
 export interface IScroll {
   children: React.ReactNode | null;
