@@ -7,7 +7,7 @@ import { IBasicModal } from '../types';
 const BasicModal: React.FC<IBasicModal> = (props) => {
   const { title, width, className, description, showFooter, Footer, config, eleRef } = props;
 
-  const { cancelBtn = { isShow: false }, submitBtn = { isShow: true }, deleteBtn = { isShow: true } } = config;
+  const { cancelBtn = { isShow: false }, submitBtn = { isShow: true }, deleteBtn = { isShow: false } } = config;
 
   return (
     <div className="basic-modal-mask">
@@ -17,6 +17,7 @@ const BasicModal: React.FC<IBasicModal> = (props) => {
             <div className="title">{title || '一些信息'}</div>
             <div className="description">{description}</div>
           </div>
+          {props.children}
           {/* 支持自定义Footer */}
           {showFooter &&
             (Footer || (
@@ -25,7 +26,7 @@ const BasicModal: React.FC<IBasicModal> = (props) => {
                   <Button
                     size="middle"
                     onClick={(e: any) => {
-                      cancelBtn.onClick && cancelBtn.onClick(e);
+                      cancelBtn.callback && cancelBtn.callback(e);
                     }}
                     className="footer-btn-cancel footer-btn"
                   >
@@ -36,7 +37,7 @@ const BasicModal: React.FC<IBasicModal> = (props) => {
                   <Button
                     size="middle"
                     onClick={(e: any) => {
-                      deleteBtn.onClick && deleteBtn.onClick(e);
+                      deleteBtn.callback && deleteBtn.callback(e);
                     }}
                     className="footer-btn-delete footer-btn"
                   >
@@ -47,7 +48,7 @@ const BasicModal: React.FC<IBasicModal> = (props) => {
                   <Button
                     size="middle"
                     onClick={(e: any) => {
-                      submitBtn.onClick && submitBtn.onClick(e);
+                      submitBtn.callback && submitBtn.callback(e);
                     }}
                     className="footer-btn-submit footer-btn"
                   >

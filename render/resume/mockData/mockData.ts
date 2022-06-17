@@ -16,6 +16,7 @@ const userResume = {
     phone: '173****0942',
     email: 'azurlane@202018@gmail.com',
     github: 'https://github.com/TimotteAA',
+    juejin: 'asdasas',
   },
   work: {
     job: '前端工程师',
@@ -37,20 +38,20 @@ const userResume = {
   evaluationList: ['喜欢睡觉', '喜欢睡觉', '喜欢睡觉', '喜欢睡觉'],
   certificate: '吹牛大赛第一名',
   certificateList: ['吹牛大赛第一名'],
-  //   schoolExperience: [
-  //     {
-  //       beginTime: '2016.09',
-  //       endTime: '2017.09',
-  //       post: '文艺部会长',
-  //       department: '校团委学生会',
-  //       content:
-  //         '计划、组织、协调各年级学生组织的文艺和文化娱乐活动｜承办好学生会部的学生文艺晚会。有效地与社团部开展合作项目',
-  //       parseContent: [
-  //         '计划、组织、协调各年级学生组织的文艺和文化娱乐活动',
-  //         '承办好学生会部的学生文艺晚会。有效地与社团部开展合作项目',
-  //       ],
-  //     },
-  //   ],
+  schoolExperience: [
+    {
+      beginTime: '2016.09',
+      endTime: '2017.09',
+      post: '文艺部会长',
+      department: '校团委学生会',
+      content:
+        '计划、组织、协调各年级学生组织的文艺和文化娱乐活动｜承办好学生会部的学生文艺晚会。有效地与社团部开展合作项目',
+      parseContent: [
+        '计划、组织、协调各年级学生组织的文艺和文化娱乐活动',
+        '承办好学生会部的学生文艺晚会。有效地与社团部开展合作项目',
+      ],
+    },
+  ],
   workExperience: [
     {
       beginTime: 1504195200000,

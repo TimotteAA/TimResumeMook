@@ -11,7 +11,8 @@ function Contact() {
       <p className="title">联系方式 Contact</p>
       <ul className="content">
         <li>电话：176****2612</li>
-        <li>邮箱：1063137960@qq.com</li>
+        <li>邮箱：juhuateng@fuckme.com</li>
+        <li>github：https://github.com/TimotteAA</li>
       </ul>
     </div>
   );

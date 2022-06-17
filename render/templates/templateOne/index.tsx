@@ -18,15 +18,15 @@ import Work from './components/Work';
 function TemplateOne() {
   // 必须带有id，以方便导出时获取DOM元素内容
   return (
-    <div styleName="a4-box">
-      <div styleName="flex container" id="visPdf">
+    <div className="a4-box">
+      <div className="flex container" id="visPdf">
         {/* 左侧 */}
-        <div styleName="left">
-          <div styleName="avatar">
+        <div className="left">
+          <div className="avatar">
             <Avatar />
           </div>
-          <div styleName="fillColor" />
-          <div styleName="baseData">
+          <div className="fillColor" />
+          <div className="baseData">
             <BaseInfo />
             <Contact />
             <Job />
@@ -34,9 +34,9 @@ function TemplateOne() {
           </div>
         </div>
         {/* 内容 */}
-        <div styleName="center">
+        <div className="center">
           <Synopsis />
-          <div styleName="listData">
+          <div className="listData">
             <Skill />
             <Post />
             <Project />

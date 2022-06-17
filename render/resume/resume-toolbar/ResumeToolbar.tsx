@@ -3,7 +3,9 @@ import React, { useState, useEffect } from 'react';
 import { RESUME_TOOLBAR_LIST } from './mockData';
 import Scroll from '@src/components/scroll/Scroll';
 import styles from './index.module.less';
-// @ts-ignore
+import { useAppDispatch } from '@utils/reduxHooks';
+import { addKeysAction } from '../store/index';
+import emitter from '@utils/events';
 import workLogo from '@assets/icon/work.png';
 
 interface ToolBarItem {
@@ -16,6 +18,9 @@ interface ToolBarItem {
 export default function ResumeToolbar() {
   const [addToolbarList, setAddToolbarList] = useState<ToolBarItem[]>([]);
   const [unAddToolbarList, setUnAddToolbarList] = useState<ToolBarItem[]>([]);
+
+  // redux
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     if (RESUME_TOOLBAR_LIST.length) {
@@ -31,6 +36,7 @@ export default function ResumeToolbar() {
 
       setAddToolbarList([...addToolbarList]);
       setUnAddToolbarList([...unAddToolbarList]);
+      dispatch(addKeysAction(addToolbarList));
     }
   }, []);
 
@@ -42,6 +48,8 @@ export default function ResumeToolbar() {
       // 已添加模块没有这个模块的key
       addedItems.push(item);
       setAddToolbarList([...addedItems]);
+      allAddKeys.push(item.key);
+      dispatch(addKeysAction(allAddKeys));
     }
 
     // 删去未加入模块
@@ -52,7 +60,7 @@ export default function ResumeToolbar() {
     }
   };
 
-  // 点击添加模块，添加到加入模块
+  // 点击已添加模块，添加到未加入模块
   const handleRemoveToolBar = (item: ToolBarItem) => {
     if (item.required) return;
 
@@ -67,7 +75,14 @@ export default function ResumeToolbar() {
     if (addKeys.includes(item.key)) {
       const addedItems = addToolbarList.filter((i) => i.key !== item.key);
       setAddToolbarList([...addedItems]);
+
+      const newAddKeys = addKeys.filter((i) => i !== item.key);
+      dispatch(addKeysAction(newAddKeys));
     }
+  };
+
+  const showModal = (key: string) => {
+    emitter.send('showModal', key);
   };
 
   const height = document.body.clientHeight;
@@ -79,18 +94,30 @@ export default function ResumeToolbar() {
           {addToolbarList.length &&
             addToolbarList.map((toolbar) => {
               return (
-                <div className={styles.box} key={toolbar.key} onClick={() => handleRemoveToolBar(toolbar)}>
+                <div className={styles.box} key={toolbar.key} onClick={() => showModal(toolbar.key)}>
                   <div className={styles.title}>
                     <img src={workLogo} alt="" />
                     {toolbar.name}
                   </div>
+                  {toolbar.required && <div className={styles.mustIcon}>{'必选项'}</div>}
+                  {!toolbar.required && (
+                    <div
+                      className={styles.icon}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleRemoveToolBar(toolbar);
+                      }}
+                    >
+                      {'移除这一项'}
+                    </div>
+                  )}
                   <div className={styles.summary}>{toolbar.summary}</div>
                 </div>
               );
             })}
 
-          {unAddToolbarList.length && <div className={styles.module}>未添加模块</div>}
-          {unAddToolbarList.length &&
+          {unAddToolbarList.length > 0 && <div className={styles.module}>未添加模块</div>}
+          {unAddToolbarList.length > 0 &&
             unAddToolbarList.map((toolbar) => {
               return (
                 <div className={styles.box} key={toolbar.key} onClick={() => handleAddToolBar(toolbar)}>
