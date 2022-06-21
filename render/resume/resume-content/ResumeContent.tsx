@@ -39,7 +39,7 @@ export default function ResumeContent() {
     setKey('');
   };
 
-  console.log(key);
+  console.log(showModal && RESUME_TOOLBAR_MAPS.projectExperience === key);
 
   return (
     <Scroll maxHeight={height - HEADER_ACTION_HEIGHT} width={820}>

@@ -4,10 +4,13 @@ import { useAppSelector } from '@utils/reduxHooks';
 import WrapperExperience from '../wrapper-experience/WrapperExperience';
 import Modal from '@src/components/Modal';
 import Form from './form/Form';
+import AdapterExperience from '../wrapper-experience/adapter';
 import useUpdateResumeHook from '../../useUpdateResumeHook';
+
 interface IProps {
   onClose(): void;
 }
+
 export default function ProjectExperience({ onClose }: IProps) {
   const updateProjectExperienceHook = useUpdateResumeHook('projectExperience');
 
@@ -18,6 +21,8 @@ export default function ProjectExperience({ onClose }: IProps) {
     };
   });
 
+  console.log(projectExperience);
+
   //   更新数据源到redux里
   const updateDataList = (newDataList: any[]) => updateProjectExperienceHook('projectList', newDataList);
 
@@ -26,8 +31,13 @@ export default function ProjectExperience({ onClose }: IProps) {
       title="工作经验"
       config={{ cancelBtn: { text: '取消', callback: onClose, isShow: true } }}
       showFooter={true}
+      width={800}
     >
-      <WrapperExperience dataList={projectExperience} updateDataList={updateDataList} children={<Form />} />
+      <WrapperExperience
+        dataList={AdapterExperience.project(projectExperience)}
+        updateDataList={updateDataList}
+        children={<Form />}
+      />
     </Modal.Confirm>
   );
 }

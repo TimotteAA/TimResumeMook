@@ -7,7 +7,7 @@ import styles from './index.module.less';
 interface IProps {
   isDisable: boolean;
   currentItem: AdapterExperienceType;
-  onChangeCurrentItem: (newCurrentItem: AdapterExperienceType[]) => void;
+  onChangeCurrentItem: (newCurrentItem: AdapterExperienceType) => void;
 }
 
 export default function Form({ isDisable, currentItem, onChangeCurrentItem }: IProps) {
@@ -20,7 +20,10 @@ export default function Form({ isDisable, currentItem, onChangeCurrentItem }: IP
         </div>
         <div className={styles.right}>
           <Input
-            onChange={(e) => {}}
+            onChange={(e) => {
+              const newCurrentItem = { ...currentItem, title: e.target.value, projectName: e.target.value };
+              onChangeCurrentItem(newCurrentItem);
+            }}
             value={currentItem?.title}
             placeholder="请输入项目名"
             allowClear={!isDisable}
@@ -34,7 +37,10 @@ export default function Form({ isDisable, currentItem, onChangeCurrentItem }: IP
         </div>
         <div className={styles.right}>
           <Input
-            onChange={(e) => {}}
+            onChange={(e) => {
+              const newCurrentItem = { ...currentItem, post: e.target.value };
+              onChangeCurrentItem(newCurrentItem);
+            }}
             value={currentItem?.post}
             placeholder="在项目中担任什么职位"
             allowClear={!isDisable}
@@ -48,7 +54,11 @@ export default function Form({ isDisable, currentItem, onChangeCurrentItem }: IP
         </div>
         <div className={styles.right}>
           <Input
-            onChange={(e) => {}}
+            onChange={(e) => {
+              const beginTime = e.target.value;
+              const newCurrentItem = { ...currentItem, beginTime };
+              onChangeCurrentItem(newCurrentItem);
+            }}
             value={currentItem?.beginTime}
             placeholder="2015.09.01"
             allowClear={!isDisable}
@@ -57,7 +67,11 @@ export default function Form({ isDisable, currentItem, onChangeCurrentItem }: IP
           />
           <span className={styles.line}>-</span>
           <Input
-            onChange={(e) => {}}
+            onChange={(e) => {
+              const endTime = e.target.value;
+              const newCurrentItem = { ...currentItem, endTime };
+              onChangeCurrentItem(newCurrentItem);
+            }}
             value={currentItem?.endTime}
             placeholder="2015.09.01"
             allowClear={!isDisable}
@@ -73,10 +87,14 @@ export default function Form({ isDisable, currentItem, onChangeCurrentItem }: IP
         <div className={styles.right}>
           <Input
             type="textarea"
-            onChange={(e) => {}}
+            onChange={(e) => {
+              const content = e.target.value;
+              const newCurrentItem = { ...currentItem, content };
+              onChangeCurrentItem(newCurrentItem);
+            }}
             rows={5}
             value={currentItem?.content}
-            placeholder="你在项目中的主要工作是什么呢？"
+            placeholder="你在项目中的主要工作是什么呢？以|进行分割"
             allowClear={!isDisable}
             disabled={isDisable}
           />

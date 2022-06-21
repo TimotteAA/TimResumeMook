@@ -132,6 +132,8 @@ function useUpdateProjectExperienceHook() {
   // const projectExperience = useAppSelector((state) => state.resume.resumeData.projectExperience);
 
   return <T>(stateKey: string, stateValue: T) => {
+    console.log(stateValue);
+
     dispatch(changeProjectList(stateValue));
   };
 }
