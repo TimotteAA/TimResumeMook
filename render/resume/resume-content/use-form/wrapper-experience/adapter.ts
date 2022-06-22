@@ -64,6 +64,10 @@ export interface AdapterExperienceType {
    * @description 最后编辑时间
    */
   date?: number;
+  /**
+   * @description 部门
+   */
+  department?: string;
 }
 
 const AdapterExperience = {

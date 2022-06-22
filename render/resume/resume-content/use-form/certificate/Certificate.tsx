@@ -22,7 +22,7 @@ export default function Certificate({ onClose }: IProps) {
   console.log(certificate);
   return (
     <Modal.Confirm
-      config={{ cancelBtn: { text: '取消', callback: onClose, isShow: true } }}
+      config={{ cancelBtn: { text: '关闭', callback: onClose, isShow: true }, submitBtn: { isShow: false } }}
       showFooter={true}
       title="荣誉证书"
     >

@@ -7,6 +7,8 @@ export interface IRecommendSkill {
   };
 }
 
+// 技能标签
+
 const colors = [
   {
     // 绿色

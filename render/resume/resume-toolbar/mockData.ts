@@ -16,7 +16,7 @@ export const RESUME_TOOLBAR_LIST = [
   {
     key: RESUME_TOOLBAR_MAPS.personal,
     name: '个人信息',
-    summary: '更好介绍自己，机会会更多',
+    summary: '更好的介绍自己，机会会更多哟！',
     required: true,
   },
   {
@@ -28,7 +28,7 @@ export const RESUME_TOOLBAR_LIST = [
   {
     key: RESUME_TOOLBAR_MAPS.contact,
     name: '联系方式',
-    summary: '少侠，请留下你的联系方式',
+    summary: '老铁，请留下你的联系方式',
     required: false,
   },
   {
@@ -58,13 +58,13 @@ export const RESUME_TOOLBAR_LIST = [
   {
     key: RESUME_TOOLBAR_MAPS.certificate,
     name: '获奖证书',
-    summary: '得过什么奖项值得炫耀',
+    summary: '有啥牛逼的就写上来吧！',
     required: false,
   },
   {
     key: RESUME_TOOLBAR_MAPS.evaluation,
     name: '个人评价',
-    summary: '低调夸一夸自己有什么亮点',
+    summary: '请低调地夸一夸自己有什么亮点',
     required: false,
   },
   {
@@ -73,10 +73,10 @@ export const RESUME_TOOLBAR_LIST = [
     summary: '展示具备的技能，突出你的能力',
     required: false,
   },
-  {
-    key: RESUME_TOOLBAR_MAPS.test,
-    name: '测试用例',
-    summary: '测试用例，一键覆盖',
-    required: false,
-  },
+  // {
+  //   key: RESUME_TOOLBAR_MAPS.test,
+  //   name: '测试用例',
+  //   summary: '测试用例，一键覆盖',
+  //   required: false,
+  // },
 ];

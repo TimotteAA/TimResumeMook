@@ -13,6 +13,9 @@ import Education from './use-form/education/Education';
 import Skill from './use-form/skill/Skill';
 import Work from './use-form/work/Work';
 import ProjectExperience from './use-form/project-experience/ProjectExperience';
+import WorkerExperience from './use-form/work-experience/WorkExperience';
+import SchoolExperience from './use-form/school-experience/SchoolExperience';
+import Synopsis from './use-form/synopsis/Synopsis';
 
 export default function ResumeContent() {
   const HEADER_ACTION_HEIGHT = 92;
@@ -39,8 +42,6 @@ export default function ResumeContent() {
     setKey('');
   };
 
-  console.log(showModal && RESUME_TOOLBAR_MAPS.projectExperience === key);
-
   return (
     <Scroll maxHeight={height - HEADER_ACTION_HEIGHT} width={820}>
       <TemplateOne />
@@ -51,6 +52,9 @@ export default function ResumeContent() {
       {showModal && RESUME_TOOLBAR_MAPS.skill === key && <Skill onClose={onModalClose} />}
       {showModal && RESUME_TOOLBAR_MAPS.workPrefer === key && <Work onClose={onModalClose} />}
       {showModal && RESUME_TOOLBAR_MAPS.projectExperience === key && <ProjectExperience onClose={onModalClose} />}
+      {showModal && RESUME_TOOLBAR_MAPS.workExperience === key && <WorkerExperience onClose={onModalClose} />}
+      {showModal && RESUME_TOOLBAR_MAPS.schoolExperience === key && <SchoolExperience onClose={onModalClose} />}
+      {showModal && RESUME_TOOLBAR_MAPS.evaluation === key && <Synopsis onClose={onModalClose} />}
     </Scroll>
   );
 }

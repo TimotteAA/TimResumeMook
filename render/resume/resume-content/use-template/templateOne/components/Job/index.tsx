@@ -1,18 +1,28 @@
-/**
- * @desc 求职意向
- * @author pengdaokuan
- */
-import React from 'react';
+import React, { useMemo } from 'react';
+
 import '../../../styles/template-one.normal.less';
 import './index.normal.less';
+import { useAppSelector } from '@utils/reduxHooks';
 
 function Job() {
+  const { work } = useAppSelector((state) => {
+    return {
+      work: state.resume.resumeData.work,
+    };
+  });
+
+  const renderedWork = useMemo(() => {
+    const newWork = { ...work };
+    newWork.cityList = work.city.split('|');
+    return newWork;
+  }, [work]);
+
   return (
     <div className="container">
       <p className="title">求职意向 Work</p>
       <ul className="content">
-        <li>职位：前端工程师</li>
-        <li>城市：广州｜成都｜海口</li>
+        <li>职位：{renderedWork.job}</li>
+        <li>城市：{renderedWork.cityList.join(' | ')}</li>
       </ul>
     </div>
   );

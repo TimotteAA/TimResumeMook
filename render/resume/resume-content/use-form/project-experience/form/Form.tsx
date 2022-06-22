@@ -5,12 +5,12 @@ import Input from '@src/components/input/Input';
 import styles from './index.module.less';
 
 interface IProps {
-  isDisable: boolean;
+  isEdit: boolean;
   currentItem: AdapterExperienceType;
   onChangeCurrentItem: (newCurrentItem: AdapterExperienceType) => void;
 }
 
-export default function Form({ isDisable, currentItem, onChangeCurrentItem }: IProps) {
+export default function Form({ isEdit, currentItem, onChangeCurrentItem }: IProps) {
   console.log(currentItem);
   return (
     <div className={styles.wrapper}>
@@ -24,10 +24,10 @@ export default function Form({ isDisable, currentItem, onChangeCurrentItem }: IP
               const newCurrentItem = { ...currentItem, title: e.target.value, projectName: e.target.value };
               onChangeCurrentItem(newCurrentItem);
             }}
-            value={currentItem?.title}
+            value={currentItem.title}
             placeholder="请输入项目名"
-            allowClear={!isDisable}
-            disabled={isDisable}
+            allowClear={isEdit}
+            disabled={!isEdit}
           />
         </div>
       </div>
@@ -41,10 +41,10 @@ export default function Form({ isDisable, currentItem, onChangeCurrentItem }: IP
               const newCurrentItem = { ...currentItem, post: e.target.value };
               onChangeCurrentItem(newCurrentItem);
             }}
-            value={currentItem?.post}
+            value={currentItem.post}
             placeholder="在项目中担任什么职位"
-            allowClear={!isDisable}
-            disabled={isDisable}
+            allowClear={isEdit}
+            disabled={!isEdit}
           />
         </div>
       </div>
@@ -59,11 +59,11 @@ export default function Form({ isDisable, currentItem, onChangeCurrentItem }: IP
               const newCurrentItem = { ...currentItem, beginTime };
               onChangeCurrentItem(newCurrentItem);
             }}
-            value={currentItem?.beginTime}
+            value={currentItem.beginTime}
             placeholder="2015.09.01"
-            allowClear={!isDisable}
+            allowClear={isEdit}
             style={{ width: 290 }}
-            disabled={isDisable}
+            disabled={!isEdit}
           />
           <span className={styles.line}>-</span>
           <Input
@@ -72,11 +72,11 @@ export default function Form({ isDisable, currentItem, onChangeCurrentItem }: IP
               const newCurrentItem = { ...currentItem, endTime };
               onChangeCurrentItem(newCurrentItem);
             }}
-            value={currentItem?.endTime}
+            value={currentItem.endTime}
             placeholder="2015.09.01"
-            allowClear={!isDisable}
+            allowClear={isEdit}
             style={{ width: 290 }}
-            disabled={isDisable}
+            disabled={!isEdit}
           />
         </div>
       </div>
@@ -93,11 +93,12 @@ export default function Form({ isDisable, currentItem, onChangeCurrentItem }: IP
               onChangeCurrentItem(newCurrentItem);
             }}
             rows={5}
-            value={currentItem?.content}
+            value={currentItem.content}
             placeholder="你在项目中的主要工作是什么呢？以|进行分割"
-            allowClear={!isDisable}
-            disabled={isDisable}
+            allowClear={isEdit}
+            disabled={!isEdit}
           />
+          <span style={{ marginTop: '5px', color: 'red' }}>每项之间请以｜进行分割（建议直接在此复制）</span>
         </div>
       </div>
     </div>

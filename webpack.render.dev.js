@@ -7,6 +7,7 @@ const devConfig = {
   mode: 'development',
   entry: {
     index: path.resolve(__dirname, './render/app.tsx'),
+    setting: path.resolve(__dirname, './windowPages/setting/app.tsx'),
   },
   output: {
     filename: '[name].[contenthash].js',
@@ -65,8 +66,10 @@ const devConfig = {
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, './render/index.html'),
       filename: path.resolve(__dirname, './dist/index.html'),
-      // chunks: ['index'],
-      // title: '测试',
+    }),
+    new HtmlWebpackPlugin({
+      template: path.resolve(__dirname, './windowPages/setting/index.html'),
+      filename: path.resolve(__dirname, './dist/setting.html'),
     }),
   ],
 };

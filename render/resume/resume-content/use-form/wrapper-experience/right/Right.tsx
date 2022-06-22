@@ -21,7 +21,6 @@ function Right({ children }: IProps) {
       }),
     ];
   };
-  console.log(children);
   return (
     <>
       <div className="header">{getChild()[0]}</div>

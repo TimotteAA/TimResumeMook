@@ -1,6 +1,6 @@
 import React from 'react';
 
-import "./index.normal.less"
+import './index.normal.less';
 import { formatToString } from '@utils/time';
 import DeleteIcon from '@assets/icon/delete.png';
 import { AdapterExperienceType } from '../../adapter';
@@ -39,7 +39,7 @@ function List({ index, experienceList, onDelete, onChange }: IListProps) {
               }}
             >
               <div className="experience-item-box">
-                <div className="experience-item-title">{item.title}</div>
+                <div className="experience-item-title">{item.title || '未命名条目'}</div>
                 <div className="experience-item-date">{formatToString(item?.date)}</div>
               </div>
               <div className="experience-item-action">

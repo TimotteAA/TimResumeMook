@@ -5,19 +5,20 @@ import styles from './index.module.less';
 import Modal from '@src/components/Modal';
 import Input from '@src/components/input/Input';
 import RecommendSkill from '@src/contansts/skill';
+import useUpdateResumeHook from '../../useUpdateResumeHook';
 
 interface IProps {
   onClose(): void;
 }
 
 export default function Skill({ onClose }: IProps) {
+  const updateProjectExperienceHook = useUpdateResumeHook('skill');
   const { skill } = useAppSelector((state) => {
     return { skill: state.resume.resumeData.skill };
   });
-
   return (
     <Modal.Confirm
-      config={{ cancelBtn: { text: '取消', callback: onClose, isShow: true } }}
+      config={{ cancelBtn: { text: '关闭', callback: onClose, isShow: true }, submitBtn: { isShow: false } }}
       showFooter={true}
       title="技能"
     >
@@ -32,28 +33,33 @@ export default function Skill({ onClose }: IProps) {
             </div>
             <div className={styles.right}>
               <div className={styles.action}>
-                {RecommendSkill.map((skill) => {
+                {RecommendSkill.map((s) => {
                   return (
                     <div
                       className={styles.label}
-                      key={skill.uid}
+                      key={s.uid}
                       style={{
-                        color: skill?.styles?.font,
-                        borderColor: skill?.styles?.font,
-                        backgroundColor: skill?.styles?.bg,
+                        color: s?.styles?.font,
+                        borderColor: s?.styles?.font,
+                        backgroundColor: s?.styles?.bg,
                       }}
                       onClick={() => {
-                        const value = `${skill}${skill ? '｜' : ''}${skill.label}`;
+                        const value = `${skill}${skill ? '｜' : ''}${s.label}`;
+                        console.log(value);
+                        updateProjectExperienceHook('skill', value);
                       }}
                     >
-                      {skill.label}
+                      {s.label}
                     </div>
                   );
                 })}
               </div>
               <Input
                 type="textarea"
-                onChange={(e) => {}}
+                onChange={(e) => {
+                  const value = e.target.value;
+                  updateProjectExperienceHook('skill', value);
+                }}
                 rows={5}
                 value={skill}
                 placeholder="例如 Vue、React"

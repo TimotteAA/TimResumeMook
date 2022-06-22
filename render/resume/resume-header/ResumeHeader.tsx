@@ -3,15 +3,36 @@ import { useNavigate } from 'react-router-dom';
 
 import styles from './index.module.less';
 import Button from '@src/components/button/Button';
+import getRootPath from '@utils/getRootPath';
+import { useAppSelector } from '@utils/reduxHooks';
+import { getResumeSavePath } from '@utils/localResumePath';
+
+const { onOpenSettingWindow } = window.openSettingWindow;
+// const { store } = window.electron;
 
 export default function ResumeHeader() {
   const navigate = useNavigate();
+
+  const { resumeData } = useAppSelector((state) => {
+    return {
+      resumeData: state.resume.resumeData,
+    };
+  });
 
   const onButtonClick = () => {
     navigate('/');
   };
 
-  const onExportPDF = () => {};
+  const onExportPDF = async () => {
+    const rootPath = await getRootPath();
+    const res = await getResumeSavePath(rootPath);
+    if (!res) {
+      onOpenSettingWindow();
+      return;
+    } else {
+      // store.set('resume', resumeData);
+    }
+  };
 
   return (
     <div className={styles.headerContainer}>

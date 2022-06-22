@@ -32,7 +32,7 @@ export function intToTimeString(num?: number): string {
 
 // 时间戳变成类似2018/01/12 12:32:21这样的字符串
 // 上述两者进行拼接
-export function formatToString(num: number | undefined, unit = '/') {
+export function formatToString(num: number | undefined, unit = '/', onlyFirst = true) {
   if (!num) return '';
   const date1 = intToDateString(num, unit);
   const date2 = intToTimeString(num);

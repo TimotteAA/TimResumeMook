@@ -1,7 +1,3 @@
-/**
- * @desc 头像
- * @author pengdaokuan
- */
 import React from 'react';
 import './index.normal.less';
 import AvatarImage from '@assets/avatar.jpg';

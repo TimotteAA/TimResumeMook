@@ -21,15 +21,15 @@ export default function ProjectExperience({ onClose }: IProps) {
     };
   });
 
-  console.log(projectExperience);
-
-  //   更新数据源到redux里
-  const updateDataList = (newDataList: any[]) => updateProjectExperienceHook('projectList', newDataList);
+  // 更新数据源到redux里
+  const updateDataList = (newDataList: any[]) => {
+    updateProjectExperienceHook('projectList', newDataList);
+  };
 
   return (
     <Modal.Confirm
-      title="工作经验"
-      config={{ cancelBtn: { text: '取消', callback: onClose, isShow: true } }}
+      title="项目"
+      config={{ cancelBtn: { text: '关闭', callback: onClose, isShow: true }, submitBtn: { isShow: false } }}
       showFooter={true}
       width={800}
     >

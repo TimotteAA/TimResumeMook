@@ -29,7 +29,7 @@ function Menu({ currentItem, isEdit, onCancelEditValue, onSaveEditValue, onChang
   return (
     <div className="menu">
       <div className="left">
-        <div className="title">{currentItem?.title}</div>
+        <div className="title">{currentItem?.title || '未命名条目'}</div>
       </div>
       <div className="right">
         {isEdit && (

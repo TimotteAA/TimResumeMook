@@ -7,6 +7,10 @@ import {
   changeCertificate,
   changeWork,
   changeProjectList,
+  changeWorkList,
+  changeSchoolList,
+  changeSkill,
+  changeEvaluation,
 } from '@src/resume/store';
 
 // 派发更新逻辑
@@ -16,29 +20,13 @@ export default function useUpdateResumeHook(dataKey: string) {
   const updateContactHook = useUpdateContactHook();
   const updateCertificateHook = useUpdateCertificateHook();
   const updateWorkHook = useUpdateWorkHook();
+  const updateSkillHook = useUpdateSkillHook();
   const updateProjectExperience = useUpdateProjectExperienceHook();
-
-  //   const updateContactHook = useUpdateContactHook();
-  //   const updateWorkHook = useUpdateWorkHook();
-  //   const updateEvaluationHook = useUpdateEvaluationHook();
-  //   const updateHobbyHook = useUpdateHobbyHook();
-  //   const updateCertificateHook = useUpdateCertificateHook();
-  //   const updateSkillHook = useUpdateSkillHook();
-  //   const updateProjectExperience = useUpdateProjectExperience();
-  //   const updateSchoolExperience = useUpdateSchoolExperience();
-  //   const updateWorkExperience = useUpdateWorkExperience();
+  const updateWorkExperience = useUpdateWorkExperienceHook();
+  const updateSchoolExperience = useUpdateSchoolExperienceHook();
+  const updateEvaluation = useUpdateEvaluationHook();
 
   return <T>(key: string, stateValue: T) => {
-    //   if (keys[0] === 'base') updatePersonalHook(keys[1], stateValue);
-    //   if (keys[0] === 'contact') updateContactHook(keys[1], stateValue);
-    //   if (keys[0] === 'work') updateWorkHook(keys[1], stateValue);
-    //   if (keys[0] === 'evaluation') updateEvaluationHook(keys[0], stateValue);
-    //   if (keys[0] === 'hobby') updateHobbyHook(keys[0], stateValue);
-    //   if (keys[0] === 'certificate') updateCertificateHook(keys[0], stateValue);
-    //   if (keys[0] === 'skill') updateSkillHook(keys[0], stateValue);
-    //   if (keys[0] === 'projectExperience') updateProjectExperience(keys[0], stateValue);
-    //   if (keys[0] === 'schoolExperience') updateSchoolExperience(keys[0], stateValue);
-    //   if (keys[0] === 'workExperience') updateWorkExperience(keys[0], stateValue);
     switch (dataKey) {
       case 'base': {
         updatePersonalHook(key, stateValue);
@@ -60,8 +48,24 @@ export default function useUpdateResumeHook(dataKey: string) {
         updateWorkHook(key, stateValue);
         return;
       }
+      case 'skill': {
+        updateSkillHook(key, stateValue);
+        return;
+      }
       case 'projectExperience': {
         updateProjectExperience(key, stateValue);
+        return;
+      }
+      case 'workExperience': {
+        updateWorkExperience(key, stateValue);
+        return;
+      }
+      case 'schoolExperience': {
+        updateSchoolExperience(key, stateValue);
+        return;
+      }
+      case 'evaluation': {
+        updateEvaluation(key, stateValue);
         return;
       }
     }
@@ -88,6 +92,14 @@ function useUpdateHobbyHook() {
 
   return <T>(stateKey: string, stateValue: T) => {
     dispatch(changeHobby(stateValue));
+  };
+}
+
+function useUpdateEvaluationHook() {
+  const dispatch = useAppDispatch();
+
+  return <T>(stateKey: string, stateValue: T) => {
+    dispatch(changeEvaluation(stateValue));
   };
 }
 
@@ -127,13 +139,38 @@ function useUpdateWorkHook() {
   };
 }
 
+function useUpdateSkillHook() {
+  const dispatch = useAppDispatch();
+  return <T>(stateKey: string, stateValue: T) => {
+    dispatch(changeSkill(stateValue));
+  };
+}
+
 function useUpdateProjectExperienceHook() {
   const dispatch = useAppDispatch();
   // const projectExperience = useAppSelector((state) => state.resume.resumeData.projectExperience);
 
-  return <T>(stateKey: string, stateValue: T) => {
+  return <T>(_: string, stateValue: T) => {
     console.log(stateValue);
 
     dispatch(changeProjectList(stateValue));
+  };
+}
+
+function useUpdateWorkExperienceHook() {
+  const dispatch = useAppDispatch();
+  // const projectExperience = useAppSelector((state) => state.resume.resumeData.projectExperience);
+
+  return <T>(_: string, stateValue: T) => {
+    dispatch(changeWorkList(stateValue));
+  };
+}
+
+function useUpdateSchoolExperienceHook() {
+  const dispatch = useAppDispatch();
+  // const projectExperience = useAppSelector((state) => state.resume.resumeData.projectExperience);
+
+  return <T>(_: string, stateValue: T) => {
+    dispatch(changeSchoolList(stateValue));
   };
 }

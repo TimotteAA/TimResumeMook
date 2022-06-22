@@ -1,9 +1,10 @@
-import fs, { promises as fsPromises } from 'fs';
+const { fsPromises, fs } = window.electron;
+
 const fileAction = {
-  read: (path: string, encoding: BufferEncoding): Promise<string> => {
+  read: (path: string, encoding?: BufferEncoding): Promise<string> => {
     return fsPromises.readFile(path, { encoding: encoding || 'utf8' });
   },
-  write: (path: string, content: string, encoding: BufferEncoding): Promise<void> => {
+  write: (path: string, content: string, encoding?: BufferEncoding): Promise<void> => {
     return fsPromises.writeFile(path, content, { encoding: encoding || 'utf8' });
   },
   rename: (oldPath: string, newPath: string) => {

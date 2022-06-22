@@ -1,23 +1,21 @@
-/**
- * @desc 简单介绍
- * @author pengdaokuan
- */
 import React from 'react';
 import './index.normal.less';
+import { useAppSelector } from '@utils/reduxHooks';
 
 function Synopsis() {
+  const { username, evaluation, job } = useAppSelector((state) => {
+    return {
+      username: state.resume.resumeData.base.username,
+      job: state.resume.resumeData.work.job,
+      evaluation: state.resume.resumeData.evaluation,
+    };
+  });
+
   return (
     <div className="content">
-      <p className="name">彭道宽</p>
-      <p className="job">前端工程师</p>
-      <p className="summary">
-        {[
-          '投身开源，rc-redux-model 库作者，SugarTurboS Club 开源组织负责人',
-          '掘金 lv3 博主，掘金文章 10w+ 阅读量，github blog 300+ star',
-          '具备良好语言表达能力和沟通能力，能快速融入团队，适应新环境。',
-          '具有代码洁癖，前后端分离，自我学习能力强，对新技术具有钻研精神',
-        ].join('，')}
-      </p>
+      <p className="name">{username}</p>
+      <p className="job">{job}</p>
+      <p className="summary">{evaluation}</p>
     </div>
   );
 }
