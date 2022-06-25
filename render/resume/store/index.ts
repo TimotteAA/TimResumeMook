@@ -1,10 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import userResume from '../mockData/mockData';
 
-// const { store } = window.electron;
-
-// console.log(Object.keys(store));
-
 type InitialStateType = {
   title: string;
   addKeys: string[];
@@ -54,6 +50,9 @@ const resumeSlice = createSlice({
     changeEvaluation(state, action) {
       state.resumeData.evaluation = action.payload;
     },
+    changeResumeData(state, action) {
+      state.resumeData = action.payload;
+    },
   },
   extraReducers: (builder) => {},
 });
@@ -70,6 +69,7 @@ const {
   changeSchoolList,
   changeSkill,
   changeEvaluation,
+  changeResumeData,
 } = resumeSlice.actions;
 export {
   addKeys as addKeysAction,
@@ -83,5 +83,6 @@ export {
   changeSchoolList,
   changeSkill,
   changeEvaluation,
+  changeResumeData,
 };
 export default resumeSlice.reducer;

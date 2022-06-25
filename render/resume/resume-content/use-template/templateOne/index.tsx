@@ -28,7 +28,7 @@ function TemplateOne() {
   // 必须带有id，以方便导出时获取DOM元素内容
   return (
     <div className="a4-box">
-      <div className="flex container" id="visPdf">
+      <div className="flex container" style={{ display: 'flex', flexDirection: 'row' }} id="pdf">
         {/* 左侧 */}
         <div className="left">
           <div className="avatar">

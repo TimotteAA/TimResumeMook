@@ -1,16 +1,46 @@
 const { contextBridge, ipcRenderer, shell } = require('electron');
-const { resolve } = require('path');
+const { resolve, join } = require('path');
 // const fs = require('fs');
 const fs = require('fs');
-const Store = require('electron-store');
+
+// 告知主进程从store中获取数据
+contextBridge.exposeInMainWorld('getResumeData', {
+  // 主进程接收get-resume-data的事件，然后发送onReplyResumeData事件
+  onGetResumeData() {
+    ipcRenderer.send('get-resume-data', '');
+  },
+  onReplyResumeData: () => {
+    return new Promise((resolve) => {
+      ipcRenderer.on('reply-resume-data', (_, arg) => {
+        if (arg) {
+          resolve(arg);
+        }
+      });
+    });
+  },
+});
+
+// 告知主进程从store中设置数据
+contextBridge.exposeInMainWorld('setResumeData', {
+  onSetResumeData(data) {
+    ipcRenderer.send('set-resume-data', data);
+  },
+});
+
+// 告知主线程打印
+contextBridge.exposeInMainWorld('exportSelectionToPDF', {
+  sendExportSelectionToPDF(data) {
+    ipcRenderer.send('exportSelectionToPDF', data);
+  },
+});
 
 contextBridge.exposeInMainWorld('electron', {
   ipcRenderer,
   shell,
   resolve,
+  join,
   fsPromises: fs.promises,
   fs,
-  store: new Store({ name: 'resumeData' }),
 });
 
 contextBridge.exposeInMainWorld('ipcRenderApi', {

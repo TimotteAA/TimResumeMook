@@ -19,7 +19,7 @@ function Certificate() {
         <li>全国计算机二级证书</li>
         <li>湖南瞎说大学自封骰王</li>
         <li>广州第一届酒王大赛参与奖</li> */}
-        {renderedCertificate.split('|').map((c) => {
+        {renderedCertificate.split('｜').map((c) => {
           return <li key={c}>{c}</li>;
         })}
       </ul>

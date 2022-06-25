@@ -24,6 +24,5 @@ export async function getResumeSavePath(path: string) {
 
   const res = JSON.parse(await fileAction.read(cachePath));
 
-  console.log(res);
   return res.resumeSavePath;
 }

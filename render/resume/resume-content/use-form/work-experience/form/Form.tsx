@@ -117,6 +117,7 @@ export default function Form({ isEdit, currentItem, onChangeCurrentItem }: IProp
             disabled={!isEdit}
           />
         </div>
+        <span style={{ marginTop: '5px', color: 'red' }}>每项之间请以｜进行分割（建议直接在此复制）</span>
       </div>
     </div>
   );

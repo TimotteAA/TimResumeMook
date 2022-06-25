@@ -1,6 +1,7 @@
 import Electron from 'electron';
 import fs from 'fs';
 import Store from 'electron-store';
+import { join } from 'path';
 
 declare global {
   interface Window {
@@ -12,6 +13,7 @@ declare global {
       fsPromises: typeof fs.promises;
       fs: typeof fs;
       store: Store;
+      join: typeof join;
     };
     ipcRenderApi: {
       onReplyRootPath: (handler: (path: string) => void) => void;
@@ -24,6 +26,16 @@ declare global {
     };
     openSettingWindow: {
       onOpenSettingWindow: Function;
+    };
+    getResumeData: {
+      onGetResumeData: Function;
+      onReplyResumeData: Function;
+    };
+    setResumeData: {
+      onSetResumeData: Function;
+    };
+    exportSelectionToPDF: {
+      sendExportSelectionToPDF: Function;
     };
   }
 }

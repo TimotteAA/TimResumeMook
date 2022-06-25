@@ -19,7 +19,6 @@ export default function Certificate({ onClose }: IProps) {
     };
   });
 
-  console.log(certificate);
   return (
     <Modal.Confirm
       config={{ cancelBtn: { text: '关闭', callback: onClose, isShow: true }, submitBtn: { isShow: false } }}
@@ -44,7 +43,7 @@ export default function Certificate({ onClose }: IProps) {
               placeholder="互联网+大赛一等奖｜掘金大学骰王｜互联网喝酒大赛进步奖"
               allowClear={true}
             />
-            <div className={styles.tips}> * 多个证书请以 | 分割</div>
+            <div className={styles.tips}> * 多个证书请以｜分割</div>
           </div>
         </div>
       </div>

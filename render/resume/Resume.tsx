@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { useAppSelector } from '@utils/reduxHooks';
-import getRootPath from '@utils/getRootPath';
+// import getRootPath from '@utils/getRootPath';
 import styles from './index.module.less';
 import ResumeHeader from './resume-header/ResumeHeader';
 import ResumeToolbar from './resume-toolbar/ResumeToolbar';
@@ -34,10 +34,6 @@ export default function Resume() {
     return {
       title: state.resume.title,
     };
-  });
-
-  getRootPath().then((res) => {
-    console.log(res);
   });
 
   return (

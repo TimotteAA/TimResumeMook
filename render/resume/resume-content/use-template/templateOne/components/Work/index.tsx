@@ -32,7 +32,19 @@ function Work() {
                   {work.department} {work.post}
                 </p>
               </div>
-              <p>{work.content}</p>
+              {work.content && (
+                <div className="text">
+                  <ul className="item-box">
+                    {work.content.split('｜').map((c) => {
+                      return (
+                        <li className="item-content" key={c}>
+                          <span>{c}</span>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </div>
+              )}
             </li>
           );
         })}

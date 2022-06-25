@@ -10,7 +10,7 @@ const devConfig = {
     setting: path.resolve(__dirname, './windowPages/setting/app.tsx'),
   },
   output: {
-    filename: '[name].[contenthash].js',
+    filename: '[name].js',
     path: path.resolve(__dirname, './dist'),
   },
   // target: 'electron-renderer',

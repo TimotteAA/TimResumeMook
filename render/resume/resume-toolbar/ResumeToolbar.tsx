@@ -90,7 +90,7 @@ export default function ResumeToolbar() {
     <Scroll width={280} maxHeight={height - 180}>
       <div className={styles.module}>
         <div className={styles.content}>
-          <div className={styles.module}>已添加模块</div>
+          <div className={styles.module}>已添加模块(Added Modules)</div>
           {addToolbarList.length &&
             addToolbarList.map((toolbar) => {
               return (

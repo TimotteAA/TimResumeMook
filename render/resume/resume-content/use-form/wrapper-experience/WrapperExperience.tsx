@@ -183,8 +183,6 @@ export default function WrapperExperience({ children, dataList, updateDataList }
     });
   }, [children, dataList, currentItem, editModal, currentIndex]);
 
-  console.log(currentIndex, currentItem, experienceList);
-
   return (
     <div className="form">
       <div className="left-box">
