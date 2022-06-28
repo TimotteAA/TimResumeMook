@@ -40,3 +40,10 @@ npm run start:main
 1. flex 布局崩了......
 
 前端搞 pdf 导出似乎没有一致性的解决方案........
+
+### Upload 组件优化
+
+1. upload 组件，当页面离开时，维持、还是取消当前的文件上传；删除时并没有添加 axios 的请求取消逻辑
+2. progress 组件的样式美化
+3. 图片文件预览
+4. onDownload、
