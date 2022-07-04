@@ -1,0 +1,46 @@
+/* message */
+.message {
+  height: 25px;
+  border: 1px solid black;
+  line-height: 25px;
+  text-align: center;
+  animation: message 2s;
+}
+
+@keyframes message {
+  1% {
+    transform: translateY(-15px);
+    opacity: 0.9;
+  }
+  15% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  95% {
+    transform: translateY(10px);
+    opacity: 0.8;
+  }
+  15% {
+    transform: translateY(15px);
+    opacity: 0;
+  }
+}
+
+/* messageContainer */
+.message-container-wrapper {
+  width: 500px;
+  height: 500px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -9999px;
+}
+
+.message-container-wrapper .message-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}

@@ -47,3 +47,15 @@ npm run start:main
 2. progress 组件的样式美化
 3. 图片文件预览
 4. onDownload、
+
+### 2022.7.4
+
+新增 Message 与 Tree 树形控件
+
+#### Message
+
+Message 组件需要一个 MessageContainer 组件，用于页面容器；当 Message 自身动画结束后从 MessageContainer 中的 messages 数组中删除，容器组件类组件为宜（？）。
+
+#### Tree
+
+Tree 组件接受一个树形的 data，如果某个子项还有 children，则继续递归渲染自身：一个 Tree 由一个 ul 与 li 组成；而删除叶子结点则是从当前节点层的数组中删除；传入的数据需要加工，以增加 clicked、opened 属性；点击父项的 clicked 时，需要递归修改子组件的 clicked，一同选中。
