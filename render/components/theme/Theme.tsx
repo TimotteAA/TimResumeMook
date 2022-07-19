@@ -22,7 +22,7 @@ function Theme() {
   //       currentTheme: state.theme.currentTheme,
   //     };
   //   });
-  const [themeList, currentTheme, dispatch] = useThemeR();
+  const [themeList, currentTheme, dispatchTheme] = useThemeR();
 
   return (
     <div className="box">
@@ -34,7 +34,7 @@ function Theme() {
               style={{ backgroundColor: t.backgroundColor }}
               className={`${currentTheme.id === t.id ? 'active' : ''}`}
               onClick={() => {
-                dispatch(changeTheme(t));
+                typeof dispatchTheme === 'function' && dispatchTheme(t);
               }}
             />
           );

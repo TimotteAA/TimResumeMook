@@ -25,7 +25,7 @@ function App() {
       }
     };
     getResumeData();
-    console.log(27);
+
     readAppConfigThemeFile().then((themeConfig) => {
       console.log(themeConfig);
       const themeList = themeConfig.themeList;
@@ -33,7 +33,6 @@ function App() {
       dispatch(changeTheme(currentTheme));
       dispatch(changeThemeList(themeList));
     });
-    console.log(29);
   }, []);
 
   return <Router />;

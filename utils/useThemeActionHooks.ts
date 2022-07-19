@@ -31,7 +31,10 @@ function useThemeR() {
       currentTheme: state.theme.currentTheme,
     };
   });
-  return [themeList, currentTheme, dispatch];
+  const dispatchTheme = (theme: Theme.Item) => {
+    dispatch(changeTheme(theme));
+  };
+  return [themeList, currentTheme, dispatchTheme];
 }
 
 export { readAppConfigThemeFile, useThemeR };
